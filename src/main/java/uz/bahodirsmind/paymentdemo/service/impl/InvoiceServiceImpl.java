@@ -39,7 +39,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     public List<OverpaidInvoicesResponse> getAllOverpaidInvoices() {
         List<OverpaidInvoicesResponse> overpaidInvoices = new ArrayList<>();
         try {
-            final var objects = invoiceRepository.findAllOverpaidInvoices();
+            List<Object[]> objects = invoiceRepository.findAllOverpaidInvoices();
             for (Object[] object : objects) {
                 overpaidInvoices.add(new OverpaidInvoicesResponse(
                         object[0] != null ? Long.valueOf(object[0].toString()) : null,

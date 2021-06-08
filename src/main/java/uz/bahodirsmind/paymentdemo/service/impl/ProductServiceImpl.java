@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
     public List<HighDemandProductsResponse> getAllHighDemandProducts() {
         List<HighDemandProductsResponse> highDemandProducts = new ArrayList<>();
         try {
-            final var objects = productRepository.findAllHighDemandProducts();
+            List<Object[]> objects = productRepository.findAllHighDemandProducts();
             for (Object[] object : objects) {
                 highDemandProducts.add(new HighDemandProductsResponse(
                         object[0] != null ? Long.parseLong(object[0].toString()) : null,
@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     public List<BulkProductsResponse> getAllBulkProducts() {
         List<BulkProductsResponse> bulkProducts = new ArrayList<>();
         try {
-            final var objects = productRepository.findAllBulkProducts();
+            List<Object[]> objects = productRepository.findAllBulkProducts();
             for (Object[] object : objects) {
                 bulkProducts.add(new BulkProductsResponse(
                         object[0] != null ? Long.parseLong(object[0].toString()) : null,

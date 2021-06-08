@@ -9,6 +9,7 @@ import uz.bahodirsmind.paymentdemo.repository.InvoiceRepository;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -26,7 +27,7 @@ public class InvoiceDTO {
         entity.setIssued(issued);
         entity.setDue(due);
         entity.setAmount(amount);
-        final var optionalInvoice = invoiceRepository.findById(orderId);
+        Optional<Invoice> optionalInvoice = invoiceRepository.findById(orderId);
         if (optionalInvoice.isPresent()) {
             entity.setOrder(optionalInvoice.get().getOrder());
         } else throw new ResourceNotFound("Order cannot be null!");

@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
     public List<NumberOfOrdersResponse> getNumberOfOrders() {
         List<NumberOfOrdersResponse> numberOfOrders = new ArrayList<>();
         try {
-            final var objects = orderRepository.findNumberOfOrders();
+            List<Object[]> objects = orderRepository.findNumberOfOrders();
             for (Object[] object : objects) {
                 numberOfOrders.add(new NumberOfOrdersResponse(
                         object[0] != null ? Countries.valueOf(object[0].toString()).name : "",
@@ -54,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
     public List<OrdersWithoutInvoicesResponse> getAllOrdersWithoutInvoices() {
         List<OrdersWithoutInvoicesResponse> ordersWithoutInvoices = new ArrayList<>();
         try {
-            final var objects = orderRepository.findAllOrdersWithoutInvoices();
+            List<Object[]> objects = orderRepository.findAllOrdersWithoutInvoices();
             for (Object[] object : objects) {
                 ordersWithoutInvoices.add(new OrdersWithoutInvoicesResponse(
                         object[0] != null ? Long.parseLong(object[0].toString()) : null,

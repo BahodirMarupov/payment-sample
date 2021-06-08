@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomersLastOrdersResponse> getCustomersLastOrders() {
         List<CustomersLastOrdersResponse> customersLastOrders = new ArrayList<>();
         try {
-            final var objects = customerRepository.findCustomersLastOrders();
+            List<Object[]> objects = customerRepository.findCustomersLastOrders();
             for (Object[] object : objects) {
                 customersLastOrders.add(new CustomersLastOrdersResponse(
                         object[0] != null ? Long.valueOf(object[0].toString()) : null,
