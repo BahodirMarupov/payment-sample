@@ -1,0 +1,22 @@
+package uz.bahodirsmind.paymentdemo.payload.error;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import uz.bahodirsmind.paymentdemo.payload.error.CustomError;
+
+import java.util.Date;
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ErrorResponse {
+
+    private String message;
+    private Date timestamp;
+    private List<CustomError> errors;
+
+}
