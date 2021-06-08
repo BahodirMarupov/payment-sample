@@ -1,5 +1,6 @@
 package uz.bahodirsmind.paymentdemo;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -62,11 +63,11 @@ public class PaymentDemoApplication implements CommandLineRunner {
                  /*
                  Initializing products
                  */
-                String booksImg = Base64.getEncoder().encodeToString(resourceLoader.getResource("classpath:books.jpg").getInputStream().readAllBytes());
-                String fruitsImg = Base64.getEncoder().encodeToString(resourceLoader.getResource("classpath:fruits.jpg").getInputStream().readAllBytes());
-                String clothesImg = Base64.getEncoder().encodeToString(resourceLoader.getResource("classpath:clothes.jpg").getInputStream().readAllBytes());
-                String laptopsImg = Base64.getEncoder().encodeToString(resourceLoader.getResource("classpath:laptops.jpg").getInputStream().readAllBytes());
-                String phonesImg = Base64.getEncoder().encodeToString(resourceLoader.getResource("classpath:phones.jpg").getInputStream().readAllBytes());
+                String booksImg = Base64.getEncoder().encodeToString(IOUtils.toByteArray(resourceLoader.getResource("classpath:books.jpg").getInputStream()));
+                String fruitsImg = Base64.getEncoder().encodeToString(IOUtils.toByteArray(resourceLoader.getResource("classpath:fruits.jpg").getInputStream()));
+                String clothesImg = Base64.getEncoder().encodeToString(IOUtils.toByteArray(resourceLoader.getResource("classpath:clothes.jpg").getInputStream()));
+                String laptopsImg = Base64.getEncoder().encodeToString(IOUtils.toByteArray(resourceLoader.getResource("classpath:laptops.jpg").getInputStream()));
+                String phonesImg = Base64.getEncoder().encodeToString(IOUtils.toByteArray(resourceLoader.getResource("classpath:phones.jpg").getInputStream()));
 
                 Product product1 = productRepository.save(new Product("Big 4", books, "good book", BigDecimal.valueOf(500.03), booksImg));
                 Product product2 = productRepository.save(new Product("GoldMind", books, "best seller book", BigDecimal.valueOf(450.00), booksImg));
